@@ -1,17 +1,30 @@
-import { Command } from 'commander';
-import { createArticle } from './createArticle';
+import { Command } from "commander";
+import { createArticle } from './article/createArticle.js';
 
 const app = new Command();
 
-app.name("@blogmd/cli")
-	.description("Command line tool for BlogMd")
+app.name("@blogmd/cli").description("Command line tool for BlogMd");
 
-// サブコマンド `article`
-app.command("article")
-	.description("新しい記事を作成します")
-	.argument("<title>", "新しい記事のタイトル")
-	.action(argument => {
-		createArticle(argument);
+app.command("create")
+	.description("Create new")
+	.argument("<subcommand>", "blog, article, manifest")
+	.action(async (subcommand) => {
+		switch (subcommand) {
+			// Create new blog
+			case "blog": {
+				// await createBlog()
+				break;
+			}
+			// Create new article
+			case "article": {
+				await createArticle()
+				break;
+			}
+			default: {
+				console.log("例外");
+			}
+		}
 	});
 
 app.parse();
+
