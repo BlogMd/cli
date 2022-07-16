@@ -1,5 +1,6 @@
 import { Command } from "commander";
 import { createArticle } from './article/createArticle.js';
+import { createBlog } from './blog/createBlog.js';
 
 const app = new Command();
 
@@ -12,7 +13,7 @@ app.command("create")
 		switch (subcommand) {
 			// Create new blog
 			case "blog": {
-				// await createBlog()
+				await createBlog()
 				break;
 			}
 			// Create new article
