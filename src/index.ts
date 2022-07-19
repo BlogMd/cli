@@ -1,3 +1,4 @@
+import BlogMd from '@blogmd/core';
 import { Command } from "commander";
 import { createArticle } from './article/createArticle.js';
 import { createBlog } from './blog/createBlog.js';
@@ -25,6 +26,14 @@ app.command("create")
 				console.log("例外");
 			}
 		}
+	});
+
+app.command("build")
+	.description("Build blog")
+	.action(() => {
+		const blogmd = new BlogMd({});
+		blogmd.build();
+		blogmd.buildIndex();
 	});
 
 app.parse();
